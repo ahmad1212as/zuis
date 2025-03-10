@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Gallery with Video Player</title>
+    <link href="https://cdn.jsdelivr.net/npm/plyr@3.6.5/dist/plyr.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.raed.net/img?id=1250215');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+            width: 80%;
+            max-width: 450px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .lesson-button {
+            padding: 16px 30px;
+            font-size: 22px;
+            background-color: #0066cc;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            width: 100%;
+            margin: 8px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .lesson-button:hover {
+            background-color: #004d99;
+            transform: scale(1.05);
+        }
+
+        .video-container {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 12px;
+            width: 80%;
+            max-width: 900px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            flex-direction: column;
+        }
+
+        .plyr__video-embed {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .back-button {
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            cursor: pointer;
+            border-radius: 4px;  
+            font-size: 20px;
+            width: 100%;
+            max-width: 300px;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #cc0000;
+        }
+
+        .back-button:active {
+            transform: scale(0.98);
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/plyr@3.6.5/dist/plyr.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Unit 7</h1>
+    <!-- Buttons for each lesson with their own video links -->
+    <button class="lesson-button" onclick="openVideo('https://path/to/lesson1_video.mp4')">Lesson 1</button>
+    <button class="lesson-button" onclick="openVideo('https://path/to/lesson2_video.mp4')">Lesson 2</button>
+    <button class="lesson-button" onclick="openVideo('https://path/to/lesson3_video.mp4')">Lesson 3</button>
+    <button class="lesson-button" onclick="openVideo('https://path/to/lesson4_video.mp4')">Lesson 4</button>
+    <button class="lesson-button" onclick="openVideo('https://path/to/lesson5_video.mp4')">Lesson 5</button>
+    <!-- Add more lessons here if needed -->
+</div>
+
+<div class="video-container">
+    <div class="plyr__video-embed">
+        <video id="player" controls>
+            <source src="" type="video/mp4">
+        </video>
+    </div>
+    <button class="back-button" onclick="backToHome()">Back to Lessons</button>
+</div>
+
+<script>
+    function openVideo(videoUrl) {
+        document.querySelector('.container').style.display = 'none';
+        const videoContainer = document.querySelector('.video-container');
+        videoContainer.style.display = 'flex';
+
+        const video = document.querySelector('#player');
+        const source = video.querySelector('source');
+        source.setAttribute('src', videoUrl);
+        video.load();
+
+        new Plyr(video);
+    }
+
+    function backToHome() {
+        document.querySelector('.container').style.display = 'flex';
+        document.querySelector('.video-container').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
