@@ -3,143 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson Gallery with Video Player</title>
-    <link href="https://cdn.jsdelivr.net/npm/plyr@3.6.5/dist/plyr.css" rel="stylesheet">
+    <title>Page Locked</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            background-image: url('https://www.raed.net/img?id=1250215');
-            background-size: cover;
-            background-position: center center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            font-family: 'Arial', sans-serif;
-            color: #fff;
+            background-color: red;
+            color: white;
+            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;
             flex-direction: column;
             text-align: center;
         }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-            width: 80%;
-            max-width: 450px;
-            max-height: 80vh;
-            overflow-y: auto;
+        .header {
+            font-size: 4vw;
+            font-weight: bold;
+            margin-bottom: 2vh;
         }
-
-        .lesson-button {
-            padding: 16px 30px;
-            font-size: 22px;
-            background-color: #0066cc;
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            width: 100%;
-            margin: 8px 0;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+        .warning-text {
+            font-size: 5vw;
+            font-weight: bold;
+            margin-bottom: 2vh;
         }
-
-        .lesson-button:hover {
-            background-color: #004d99;
-            transform: scale(1.05);
+        .warning-icons {
+            font-size: 8vw;
         }
-
-        .video-container {
-            display: none;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 12px;
-            width: 80%;
-            max-width: 900px;
-            text-align: center;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-            flex-direction: column;
-        }
-
-        .plyr__video-embed {
-            width: 100%;
-            max-width: 900px;
-        }
-
-        .back-button {
-            background-color: #ff0000;
-            color: white;
-            border: none;
-            padding: 12px 28px;
-            cursor: pointer;
-            border-radius: 4px;  
-            font-size: 20px;
-            width: 100%;
-            max-width: 300px;
-            margin-top: 20px;
-        }
-
-        .back-button:hover {
-            background-color: #cc0000;
-        }
-
-        .back-button:active {
-            transform: scale(0.98);
+        .warning-icons::before {
+            content: "⚠️ ⚠️ ⚠️";
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/plyr@3.6.5/dist/plyr.js"></script>
 </head>
 <body>
 
-<div class="container">
-    <h1>Unit 6</h1>
-    <!-- Buttons for each lesson with their own video links -->
-    <button class="lesson-button" onclick="openVideo('https://rr4---sn-4g5edn6r.c.drive.google.com/videoplayback?expire=1741644656&ei=QDnPZ8GlFsyZy_sP6t6JqAE&ip=176.29.111.7&id=649b9b3b0aac431a&itag=136&source=webdrive&requiressl=yes&xpc=EghonaK1InoBAQ==&met=1741633856,&mh=6i&mm=32,26&mn=sn-4g5edn6r,sn-hgn7rnee&ms=su,onr&mv=m&mvi=4&pl=24&rms=su,su&ttl=transient&susc=dr&obr=https://drive.google.com&driveid=1h33A9aIlFk_Btf6R0NbR6-GDTsX0ciVh&app=explorer&eaua=okVpjC1Pk3A&mime=video/mp4&vprv=1&prv=1&rqh=1&gir=yes&clen=427079349&dur=2862.360&lmt=1741527669302125&mt=1741633489&fvip=3&subapp=DRIVE_WEB_DESKTOP&txp=0010224&sparams=expire,ei,ip,id,itag,source,requiressl,xpc,ttl,susc,obr,driveid,app,eaua,mime,vprv,prv,rqh,gir,clen,dur,lmt&sig=AJfQdSswRAIgeDxiahqZ8LrsgHphTFU7d3Wigvb8Tj6f5rTxwXtDimgCICPqP4HHheSjOmFosfFf1fp7-GpTQ18j19Vr2TWkowPV&lsparams=met,mh,mm,mn,ms,mv,mvi,pl,rms&lsig=AFVRHeAwRAIgKrLjiDoF0PR0oc2O1RNmAEpzZgTMg0fwQPy6UvWV3FcCIEaAOMhh0f2HiG5wZgl42XUyVqE3warvx3dDDMhJ5ejf&alr=yes&cpn=rK6wP7zz04nHdpXP&c=WEB_EMBEDDED_PLAYER&cver=1.20250304.00.00')"> Modals and related verbs pert 1</button>
-    <button class="lesson-button" onclick="openVideo('https://path/to/lesson2_video.mp4')">Lesson 2</button>
-    <button class="lesson-button" onclick="openVideo('https://path/to/lesson3_video.mp4')">Lesson 3</button>
-    <button class="lesson-button" onclick="openVideo('https://path/to/lesson4_video.mp4')">Lesson 4</button>
-    <button class="lesson-button" onclick="openVideo('https://path/to/lesson5_video.mp4')">Lesson 5</button>
-    <!-- Add more lessons here if needed -->
-</div>
-
-<div class="video-container">
-    <div class="plyr__video-embed">
-        <video id="player" controls>
-            <source src="" type="video/mp4">
-        </video>
+    <div class="header" id="date-time"></div>
+    <div class="warning-text">
+        Page Locked. Contact the Owner
     </div>
-    <button class="back-button" onclick="backToHome()">Back to Lessons</button>
-</div>
+    <div class="warning-icons"></div>
 
-<script>
-    function openVideo(videoUrl) {
-        document.querySelector('.container').style.display = 'none';
-        const videoContainer = document.querySelector('.video-container');
-        videoContainer.style.display = 'flex';
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            const dateTime = now.toLocaleString('en-US', {
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+                hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
+            });
+            document.getElementById('date-time').textContent = dateTime;
+        }
 
-        const video = document.querySelector('#player');
-        const source = video.querySelector('source');
-        source.setAttribute('src', videoUrl);
-        video.load();
-
-        new Plyr(video);
-    }
-
-    function backToHome() {
-        document.querySelector('.container').style.display = 'flex';
-        document.querySelector('.video-container').style.display = 'none';
-    }
-</script>
+        updateDateTime();
+        setInterval(updateDateTime, 1000); // Update every second
+    </script>
 
 </body>
 </html>
