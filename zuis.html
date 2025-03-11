@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        /* Background image */
+        @media (min-width: 1024px) {
+            body {
+                background-image: url('https://www.raed.net/img?id=1250215');
+                background-size: cover;
+                background-position: center center;
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+            }
+        }
+
+        @media (max-width: 1023px) {
+            body {
+                background-image: url('https://www.raed.net/img?id=1250046');
+                background-size: cover;
+                background-position: center center;
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+            }
+        }
+
+        /* Login container styles */
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 20px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-container h2 {
+            color: #007bff;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 30px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 14px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-container input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .login-container .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .login-container .no-account {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .login-container .no-account:hover {
+            color: #0056b3;
+        }
+
+        /* Choose Unit container styles */
+        .choose-unit-container {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 20px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .choose-unit-container h1 {
+            color: #007bff;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .unit-options {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .unit-options li {
+            margin: 12px 0;
+        }
+
+        .unit-options li a {
+            text-decoration: none;
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .unit-options li a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Popup styles */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 2;
+        }
+
+        .popup-container button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        .popup-container button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Instagram link style */
+        .popup-container a {
+            color: #007bff;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .popup-container a:hover {
+            color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Login page -->
+<div class="login-container" id="loginContainer">
+    <h2>Login</h2>
+    <form id="loginForm" onsubmit="return checkLogin()">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required aria-label="Username">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required aria-label="Password">
+
+        <input type="submit" value="Login">
+    </form>
+    
+    <p><a href="#" class="no-account" onclick="openPopup()">Don't have an account?</a></p>
+</div>
+
+<!-- Popup Overlay and Content -->
+<div class="overlay" id="overlay"></div>
+<div class="popup-container" id="popupContainer">
+    <h3>To get your account, please contact me via Instagram</h3>
+    <p>Click the link below to message me:</p>
+    <a href="https://www.instagram.com/ahmad_algwary/" target="_blank">Click here to message me on Instagram</a>
+    <br><br>
+    <button class="close-btn" onclick="closePopup()">Close</button>
+</div>
+
+<!-- Choose Unit page -->
+<div class="choose-unit-container" id="chooseUnitContainer" style="display:none;">
+    <h1>Choose Unit</h1>
+    <ul class="unit-options">
+        <li><a href="#" onclick="loadUnit('6')">Unit 6</a></li>
+        <li><a href="#" onclick="loadUnit('7')">Unit 7</a></li>
+        <li><a href="#" onclick="loadUnit('8')">Unit 8</a></li>
+        <li><a href="#" onclick="loadUnit('9')">Unit 9</a></li>
+        <li><a href="#" onclick="loadUnit('10')">Unit 10</a></li>
+    </ul>
+</div>
+
+<script>
+    function checkLogin() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        var form = document.getElementById("loginForm");
+        var previousErrorMessage = form.querySelector(".error-message");
+
+        // Remove previous error message if any
+        if (previousErrorMessage) {
+            form.removeChild(previousErrorMessage);
+        }
+
+        // Validate login
+        if (username === "Zuis" && password === "zuis") {
+            document.getElementById("loginContainer").style.display = "none";
+            document.getElementById("chooseUnitContainer").style.display = "block";
+            document.title = "Choose Unit";
+            return false;
+        } else {
+            var errorMessage = document.createElement("div");
+            errorMessage.textContent = "⚠️ Invalid username or password. Please try again.";
+            errorMessage.className = "error-message";
+            form.insertBefore(errorMessage, form.firstChild);
+
+            // Highlight error fields
+            document.getElementById("username").classList.add("error-border");
+            document.getElementById("password").classList.add("error-border");
+            return false;
+        }
+    }
+
+    function loadUnit(unitNumber) {
+        let url = `https://raw.githubusercontent.com/ahmad1212as/zuis/refs/heads/main/Unit%20${unitNumber}.html`;
+
+        fetch(url)
+            .then(response => response.text())
+            .then(data => {
+                let windowWidth = 800; // العرض
+                let windowHeight = 600; // الارتفاع
+                let windowOptions = `width=${windowWidth},height=${windowHeight},top=${(window.innerHeight - windowHeight) / 2},left=${(window.innerWidth - windowWidth) / 2}`;
+                let newWindow = window.open('', '_blank', windowOptions);
+                newWindow.document.write(data);
+                newWindow.document.close();
+            })
+            .catch(error => {
+                console.error('Error loading the unit:', error);
+            });
+    }
+
+    function openPopup() {
+        document.getElementById("overlay").style.display = "block";
+        document.getElementById("popupContainer").style.display = "block";
+    }
+
+    function closePopup() {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("popupContainer").style.display = "none";
+    }
+</script>
+
+</body>
+</html>
