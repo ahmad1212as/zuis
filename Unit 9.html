@@ -1,46 +1,57 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>فتح تطبيق إنستقرام المستنسخ</title>
-<style>
-  body { font-family: Arial, sans-serif; direction: rtl; padding: 20px; }
-  button {
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-    background-color: #405de6;
-    color: white;
-    border: none;
-    border-radius: 5px;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <title>موقع eschool</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0; padding: 0;
+      background: #f9f9f9;
+    }
+    header {
+      background-color: #0056b3;
+      color: white;
+      padding: 1em 0;
+      margin-bottom: 10px;
+    }
+    a.button {
+      display: inline-block;
+      background-color: #007bff;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+    a.button:hover {
+      background-color: #0056b3;
+    }
+    iframe {
+      width: 90%;
+      height: 70vh;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>مرحباً في موقع eschool</h1>
+  </header>
 
-<h2>اضغط الزر لفتح تطبيق إنستقرام المستنسخ</h2>
+  <a class="button" href="https://eschool.zuis.edu.jo/" target="_blank" rel="noopener noreferrer">
+    افتح الموقع في نافذة جديدة
+  </a>
 
-<button id="openAppBtn">افتح التطبيق المستنسخ</button>
+  <iframe src="https://eschool.zuis.edu.jo/" title="eschool"></iframe>
 
-<script>
-  document.getElementById('openAppBtn').addEventListener('click', function() {
-    // URI scheme الخاص بالتطبيق المستنسخ
-    const scheme = 'mycloneinsta://';
-    const timeout = 2000;
-    let openTime = Date.now();
-
-    // محاولة فتح التطبيق عبر تغيير موقع النافذة
-    window.location = scheme;
-
-    // بعد مدة، إذا التطبيق ما فتح (يعني المستخدم ما ترك الصفحة)، نظهر تنبيه
-    setTimeout(() => {
-      if (Date.now() - openTime < timeout + 100) {
-        alert('يبدو أن التطبيق غير مثبت على جهازك.');
-      }
-    }, timeout);
-  });
-</script>
-
+  <footer>
+    <p>© 2025 جميع الحقوق محفوظة</p>
+  </footer>
 </body>
 </html>
